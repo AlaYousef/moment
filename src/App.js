@@ -1,14 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import Button from 'react-bootstrap/Button';
+import styles from './App.module.css';
+import NavBar from './components/NavBar';
+import Container from 'react-bootstrap/Container';
+import {Route,Switch} from 'react-router-dom';
+import './api/axiosDefaults';
+import SignUpForm from './pages/auth/SignUnForm';
 
 function App() {
   return (
-    <div className="App">
+    <div className={styles.App}>
        
-        <h1>
-          Hello from Ala
-        </h1>
-     
+      <NavBar />
+      <Container className={styles.Main}>
+       <Switch>
+        <Route exact path="/" render={() => <h1>Home page</h1>} />
+        <Route exact path="/signin" render={() => <h1>sign in</h1>} />
+        <Route exact path="/signup" render={() => <SignUpForm />} />
+        <Route  render={() => <h1>page not found!</h1>} />
+       </Switch>
+      </Container>
      
     </div>
   );
